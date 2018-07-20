@@ -130,30 +130,20 @@ CYAN="\[\033[0;36m\]"
 GREEN="\[\033[00m\]"
 RED="\[\033[0;31m\]"
 VIOLET="\[\033[01;35m\]"
-ORANGE="\[\038[5;202m\]"
+ORANGE="\[\033[00;33m\]"
 HEART=$'\u2765'
+MUSIC_A=$'\u266A'
+MUSIC_B=$'\u266c'
 
 function color_my_prompt {
   local __user_and_host="$GREEN\u@\h"
   local __cur_location="$BLUE\W"           # capital 'W': current directory, small 'w': full file path
-  local __git_branch_color="$GREEN"
-  local __prompt_tail="$VIOLET$" 
-  local __user_input_color="$GREEN"
-  local __git_branch='$(__git_ps1)'; 
- 
-  # colour branch name depending on state
-  if [[ "$(__git_ps1)" =~ "*" ]]; then     # if repository is dirty
-      __git_branch_color="$RED"
-  elif [[ "$(__git_ps1)" =~ "$" ]]; then   # if there is something stashed
-      __git_branch_color="$YELLOW"
-  elif [[ "$(__git_ps1)" =~ "%" ]]; then   # if there are only untracked files
-      __git_branch_color="$LIGHT_GRAY"
-  elif [[ "$(__git_ps1)" =~ "+" ]]; then   # if there are staged files
-      __git_branch_color="$CYAN"
-  fi
-  
+  local __location='`pwd | sed "s#\(/[^/]\{1,\}/[^/]\{1,\}/[^/]\{1,\}/\).*\(/[^/]\{1,\}/[^/]\{1,\}\)/\{0,1\}#\1_\2#g"`'
+  local __prompt_tail="$VIOLET$"
+  local __git_branch='$(__git_ps1)';
+
   # Build the PS1 (Prompt String)
-  PS1=" $VIOLET$HEART $__cur_location$RED$__git_branch $VIOLET$ $LIGHT_GRAY"
+  PS1=" $ORANGE$MUSIC_A $BLUE$__location$RED$__git_branch $ORANGE$MUSIC_B $LIGHT_GRAY"
 }
 
 # configure PROMPT_COMMAND which is executed each time before PS1
