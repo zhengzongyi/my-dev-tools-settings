@@ -1,5 +1,15 @@
+BoldAsFont=-1
+Columns=140
+Rows=40
+FontHeight=10
+RowSpacing=2
+Locale=zh_CN
+Charset=UTF-8
+Language=@
+Term=xterm-256color
+
 ForegroundColour=131,148,150
-BackgroundColour=0,43,54
+BackgroundColour=48,10,36
 CursorColour=220,50,47
 
 Black=7,54,66
